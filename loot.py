@@ -5,6 +5,7 @@ import random
 
 _loot_table = parser.read_csv("data/LootTable.csv", structs.Loot)
 
+# Updated weights so that higher tier zones have better drop quality
 QualityWeights = {
     "T1": {
         "Common": 0.7,
@@ -13,28 +14,29 @@ QualityWeights = {
         "Legendary": 0.01,
     },
     "T2": {
-        "Common": 0.55,
-        "Rare": 0.3,
-        "Epic": 0.12,
-        "Legendary": 0.03,
-    },
-    "T3": {
-        "Common": 0.4,
+        "Common": 0.5,
         "Rare": 0.35,
-        "Epic": 0.2,
+        "Epic": 0.1,
         "Legendary": 0.05,
     },
-    "T4": {
-        "Common": 0.25,
+    "T3": {
+        "Common": 0.2,
         "Rare": 0.4,
-        "Epic": 0.27,
-        "Legendary": 0.08,
+        "Epic": 0.3,
+        "Legendary": 0.2,
+    },
+    "T4": {
+        "Common": 0.03,
+        "Rare": 0.07,
+        "Epic": 0.4,
+        "Legendary": 0.5,
     },
 }
 
+# Equal chance for all gear types
 PieceWeights = {
-    "Weapon": 0.15,
-    "Chest": 0.25,
+    "Weapon": 0.2,
+    "Chest": 0.2,
     "Helm": 0.2,
     "Legs": 0.2,
     "Accessory": 0.2,

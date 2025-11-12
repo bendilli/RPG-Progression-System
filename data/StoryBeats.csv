@@ -1,10 +1,10 @@
 BeatNum,Stage,BeatName,BeatStartStep,ZoneLevel,BeatDC,ZoneTier
-1,Ordinary World,Village Under the Ancient Hill,1,60,10,1
-2,Call to Adventure,The Omen at the Skyfall Stone,15,70,10,1
-3,Mentor,The Wanderer at the Bridge,30,85,10,2
-4,Threshold,Forest Gate Opens,45,100,11,2
-5,Trials,Whispering Pines,60,120,11,3
-6,Ordeal,Moonless Grove Ambush,90,145,11,3
-7,Revelation,Rune Beneath the Roots,120,170,12,4
-8,Transformation,Mistfire Shrine Oath,150,200,12,4
-9,Return,Home Beneath Changed Stars,180,230,13,4
+1,Ordinary World,Woven Fields of Gold,1,60,10,1
+2,Call to Adventure,The Silence Breaks,15,70,10,1
+3,Mentor,The Nymph at the Forest's Edge,30,85,10,2
+4,Threshold,The Looming City Gates,45,100,11,2
+5,Trials,The Royal Knights Attest,60,120,11,3
+6,Ordeal,The Fall of the Empress,90,145,11,3
+7,Revelation,The Scepter of Fate,120,170,12,4
+8,Transformation,The Sacrifice of Humanity,150,200,12,4
+9,Return,A Weary Farmer's Trek Home,180,230,13,4

@@ -1,7 +1,7 @@
 {
     "Parameters": {
         "XPExponent": 1.35,
-        "CombatChance": 0.6,
+        "CombatChance": 0.45,
         "DeathChance": 0.08,
         "RepairCostPct": 0.05,
         "RespecChanceCombat": 0.03,
@@ -33,22 +33,22 @@
                 "Legendary": 0.01
             },
             "T2": {
-                "Common": 0.55,
-                "Rare": 0.3,
-                "Epic": 0.12,
-                "Legendary": 0.03
-            },
-            "T3": {
-                "Common": 0.4,
+                "Common": 0.5,
                 "Rare": 0.35,
-                "Epic": 0.2,
+                "Epic": 0.1,
                 "Legendary": 0.05
             },
-            "T4": {
-                "Common": 0.25,
+            "T3": {
+                "Common": 0.2,
                 "Rare": 0.4,
-                "Epic": 0.27,
-                "Legendary": 0.08
+                "Epic": 0.3,
+                "Legendary": 0.2
+            },
+            "T4": {
+                "Common": 0.03,
+                "Rare": 0.07,
+                "Epic": 0.4,
+                "Legendary": 0.5
             }
         },
         "Thresholds": {
@@ -79,17 +79,17 @@
         }
     },
     "DropThresholds": {
-        "Weapon": 0.15,
-        "Chest": 0.25,
+        "Weapon": 0.2,
+        "Chest": 0.2,
         "Helm": 0.2,
         "Legs": 0.2,
         "Accessory": 0.2
     },
     "ScoreWeights": {
-        "Common": 1.4,
-        "Rare": 1.2,
-        "Epic": 1.0,
-        "Legendary": 0.9,
+        "Common": 0.9,
+        "Rare": 1.0,
+        "Epic": 1.2,
+        "Legendary": 1.4,
         "Zone": 0.6
     }
 }

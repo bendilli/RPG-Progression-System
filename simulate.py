@@ -31,8 +31,8 @@ def combat(
             stats.XP_Earned = exp
 
             gold = inputs.GOLD_PER_COMBAT_STEP
-            player.award_gold(gold)
-            stats.Gold_Earned = gold
+            player.award_gold(gold * player.level) #Gold scales with level. Gold = 25 * level.
+            stats.Gold_Earned = gold * player.level
 
             drop = loot.get_drop(world)
             if drop is not None:
@@ -66,8 +66,8 @@ def non_combat(
     if success:
         # maybe use nc_rules.csv
         gold = inputs.GOLD_PER_NON_COMBAT_STEP
-        player.award_gold(gold)
-        stats.Gold_Earned = gold
+        player.award_gold(int(gold * (player.level * 1.5))) #Gold scales with level. Gold = 10 * (level * 1.5).
+        stats.Gold_Earned = int(gold * (player.level * 1.5))
 
 
 def simulate(turns: int):
