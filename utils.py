@@ -63,16 +63,40 @@ def stat_score(player: structs.Player, stat_key: str) -> float:
 
 
 def combat_chance(player: structs.Player, world: structs.World) -> float:
-    skill_noise = math.sqrt(-2 * math.log(random.random())) * math.cos(
-        2 * math.pi * random.random()
-    )
+    # minimal per-encounter skill noise to reduce variation
+    skill_noise = random.gauss(0, 1) * 0.12
     skill_difficulty = inputs.SKILL_DIFF_TIER_MULT + world.ZoneTier * skill_noise
 
-    success_chance = 1 - (
-        skill_difficulty - (world.ZoneTier * inputs.SKILL_DIFF_TIER_MULT)
-    ) / (10 * inputs.SKILL_DIFF_ST_DEV)
+    # base power ratio from gear; keep growth slightly superlinear so progression feels stronger
+    base_power = max(0.01, power_ratio(player, world))
+    scaled_power = (base_power ** 1.12) * (1.0 + player.level * 0.01)
+
+    # map difficulty into comparable range
+    difficulty_scale = (skill_difficulty / max(1.0, 10 * inputs.SKILL_DIFF_ST_DEV))
+
+    advantage = scaled_power - difficulty_scale
+
+    # if player skill (scaled_power) is above zone difficulty, give a significant advantage
+    if advantage > 0:
+        # boost scales with how far above difficulty the player is and grows more strongly with level
+        level_boost = 1.0 + min(4.0, player.level * 0.05)
+        advantage += advantage * (1.4 * level_boost)
+
+    # increase logistic steepness with player level to reduce outcome variance as player progresses
+    steepness = 2.0 + min(4.0, player.level * 0.06)
+    success_chance = logistic(advantage, L=1.0, k=steepness, x0=0.0)
+
+    # if player skill is close to zone difficulty, give an extra proximity bonus to increase odds
+    # (applies regardless of slight positive/negative advantage)
+    proximity_sigma = 0.5  # width of the "close" window in advantage units
+    proximity_amplitude = 0.15 + min(0.35, player.level * 0.02)  # grows modestly with level
+    proximity_boost = proximity_amplitude * math.exp(- (advantage ** 2) / (2 * proximity_sigma ** 2))
+    success_chance += proximity_boost
+
+    # very small jitter so outcomes are not perfectly deterministic
+    jitter = random.gauss(0, 0.005)
     success_chance = clamp(
-        success_chance,
+        success_chance + jitter,
         floor=params.FLOOR_SUCCESS,
         ceil=params.CEIL_SUCCESS,
     )
