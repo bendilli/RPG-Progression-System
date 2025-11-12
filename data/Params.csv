@@ -2,9 +2,9 @@ Name,Value
 Cap_Success,0.95
 Floor_Success,0.05
 AttemptSlope,1.0
-FailStep,2.0
+FailStep,5.0
 SuccessStep,0.0
 Use_Live_Rolls,1.0
 NC_Slope,1.3
-Combat_Slope,0.55
+Combat_Slope,0.75
 Combat_Shift,1.5

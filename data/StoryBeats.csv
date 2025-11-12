@@ -1,10 +1,10 @@
 BeatNum,Stage,BeatName,BeatStartStep,ZoneLevel,BeatDC,ZoneTier,BeatLevelReq
 1,Ordinary World,Woven Fields of Gold,1,60,10,1,0
 2,Call to Adventure,The Silence Breaks,15,70,10,1,2
-3,Mentor,The Nymph at the Forest's Edge,30,85,10,2,4
-4,Threshold,The Looming City Gates,45,100,11,2,6
-5,Trials,The Royal Knights Attest,60,120,11,3,8
-6,Ordeal,The Fall of the Empress,90,145,11,3,10
-7,Revelation,The Scepter of Fate,120,170,12,4,12
-8,Transformation,The Sacrifice of Humanity,150,200,12,4,14
-9,Return,A Weary Farmer's Trek Home,180,230,13,4,16
+3,Mentor,The Nymph at the Forest's Edge,30,95,10,2,5
+4,Threshold,The Looming City Gates,45,150,11,2,8
+5,Trials,The Royal Knights Attest,60,180,11,3,12
+6,Ordeal,The Fall of the Empress,90,210,11,3,16
+7,Revelation,The Scepter of Fate,120,240,12,4,18
+8,Transformation,The Sacrifice of Humanity,150,300,12,4,20
+9,Return,A Weary Farmer's Trek Home,180,350,13,4,20

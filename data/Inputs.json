@@ -21,7 +21,7 @@
         "Seed": 1,
         "BaseRecommendedGear": 100,
         "GearGrowthPerZone": 1.08,
-        "ZoneScale": 5,
+        "ZoneScale": 7,
         "GearStatScaling": 15
     },
     "GearQualityWeights": {
