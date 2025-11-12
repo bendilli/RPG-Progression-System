@@ -96,9 +96,11 @@ class Player:
 
         for p in self._progression:
             if p.Level == self.level:
-                if self._exp >= p.XP_to_Next:
+                if self._exp >= p.XP_to_Next and self.gold >= (self.level * 250): #Leveling up now costs gold based on current level
                     self.level += 1
                     self._exp -= p.XP_to_Next
+                    self.gold -= self.level * 250
+                    Statistics.Gold_Spent += self.level * 250
 
     def award_gold(self, amount: int):
         self.gold += amount

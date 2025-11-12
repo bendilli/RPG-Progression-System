@@ -23,7 +23,7 @@ def record_turn(
 
         with open(debug_file, mode="w") as file:
             file.write(
-                "Timestamp,Step,PlayerLevel,ActiveBeat#,ActiveBeatName,ZoneLevel,PowerRatio,GearScore,LootRoll,Outcome,AssertFail,FailNote,SC_Combat,SC_UNI,SC_NonCombat\n"
+                "Timestamp,Step,PlayerLevel,ActiveBeat#,ActiveBeatName,ZoneLevel,PowerRatio,GearScore,LootRoll,Outcome,AssertFail,FailNote,SC_Combat,SC_NonCombat\n"
             )
 
     # write data
@@ -34,5 +34,5 @@ def record_turn(
 
     with open(debug_file, mode="a") as file:
         file.write(
-            f"{datetime.datetime.now().isoformat()},{turn},{player.level},{world.BeatNum},{world.BeatName},{world.ZoneLevel},{utils.power_ratio(player, world):.3f},{player.equipment.get_score()},LootRoll,Outcome,AssertFail,FailNote,{stats.SuccessChanceCombat:.2f},\n"
+            f"{datetime.datetime.now().isoformat()},{turn},{player.level},{world.BeatNum},{world.BeatName},{world.ZoneLevel},{utils.power_ratio(player, world):.3f},{player.equipment.get_score()},LootRoll,Outcome,AssertFail,FailNote,{stats.SuccessChanceCombat:.2f},{stats.SuccessChance_NonCombat:.2f}\n"
         )

@@ -84,7 +84,7 @@ def simulate(turns: int):
             non_combat(player, world, stats)
 
         # change stage
-        world = story.progress_story(turn, world)
+        world = story.progress_story(turn, world, player)
 
         # record results
         log.record_turn(turn, player, world, stats)
