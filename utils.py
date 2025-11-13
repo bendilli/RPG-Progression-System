@@ -44,12 +44,27 @@ def skill_check(
 def clamp(x: float, *, floor: float, ceil: float):
     return max(floor, min(ceil, x))
 
-
+# levels provide a little bonus, but gear is the main driver of power
 def power_ratio(player: structs.Player, world: structs.World) -> float:
-    return player.equipment.get_score() / (
+    gear = max(0.0, player.equipment.get_score())
+    recommended = max(
+        1.0,
         inputs.BASE_RECOMMENDED_GEAR
-        * inputs.GEAR_GROWTH_PER_ZONE ** (world.ZoneLevel / inputs.ZONE_SCALE)
+        * (inputs.GEAR_GROWTH_PER_ZONE ** (world.ZoneLevel / inputs.ZONE_SCALE)),
     )
+
+    # modest multiplicative benefit from level (keeps level relevant without overpowering gear)
+    level_mult = 1.0 + (player.level * 0.035)
+
+    effective_power = gear * level_mult
+
+    # apply light diminishing returns so very large gear scores don't explode the ratio
+    effective_power = effective_power ** 0.95
+
+    ratio = effective_power / recommended
+
+    # keep ratio within reasonable bounds
+    return clamp(ratio, floor=0.01, ceil=10.0)
 
 
 def stat_score(player: structs.Player, stat_key: str) -> float:
